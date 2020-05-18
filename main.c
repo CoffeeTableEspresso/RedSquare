@@ -13,8 +13,9 @@
 
 VECT_DECL(SDL_Rect)
 
-#define ASSET(x) ("assets/" #x)
+// #define ASSET(x) ("assets/" #x)
 
+/*
 enum KeyPressSurfaces
 {
 	KEY_PRESS_SURFACE_DEFAULT,
@@ -24,13 +25,14 @@ enum KeyPressSurfaces
 	KEY_PRESS_SURFACE_RIGHT,
 	KEY_PRESS_SURFACE_TOTAL
 };
+*/
 
 struct Window_State {
 	SDL_Window *window;
 	SDL_Renderer *renderer;
-	SDL_Surface *screen;
-	SDL_Texture *current;
-	SDL_Texture *key_press_surfaces[KEY_PRESS_SURFACE_TOTAL];
+	// SDL_Surface *screen;
+	// SDL_Texture *current;
+	// SDL_Texture *key_press_surfaces[KEY_PRESS_SURFACE_TOTAL];
 };
 
 bool winit(struct Window_State *state) {
@@ -70,10 +72,11 @@ bool winit(struct Window_State *state) {
 		return false;
 	}
 
-	state->screen = SDL_GetWindowSurface(state->window);
+	// state->screen = SDL_GetWindowSurface(state->window);
 	return true;
 }
 
+/*
 SDL_Texture *load_texture(struct Window_State *state, const char *path) {
 	SDL_Surface *surface = IMG_Load(path);
 	if (!surface) {
@@ -89,7 +92,9 @@ SDL_Texture *load_texture(struct Window_State *state, const char *path) {
 
 	return texture;
 }
+*/
 
+/*
 bool load_media(struct Window_State *state) {
 	state->key_press_surfaces[KEY_PRESS_SURFACE_DEFAULT] = load_texture(state, ASSET(loaded.png));
 	state->key_press_surfaces[KEY_PRESS_SURFACE_UP] = load_texture(state, ASSET(up.bmp));
@@ -103,11 +108,12 @@ bool load_media(struct Window_State *state) {
 	}
 	return true;
 }
+*/
 
 void wclose(struct Window_State *state) {
-	for (unsigned i = 0; i < KEY_PRESS_SURFACE_TOTAL; i++) {
-		SDL_DestroyTexture(state->key_press_surfaces[i]);
-	}
+	//for (unsigned i = 0; i < KEY_PRESS_SURFACE_TOTAL; i++) {
+	//	SDL_DestroyTexture(state->key_press_surfaces[i]);
+	//}
 
 	SDL_DestroyRenderer(state->renderer);
 	SDL_DestroyWindow(state->window);
@@ -164,7 +170,7 @@ int main(int argc, char *argv[]) {
 	struct Window_State state;
 	winit(&state);
 
-	load_media(&state);
+	// load_media(&state);
 
 	bool quit = false;
 	SDL_Event event_handler;
