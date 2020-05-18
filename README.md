@@ -7,6 +7,9 @@ A very simple game I made to get used to SDL and test out [YASL](https://github.
 - SDL Image
 - YASL
 
+## Platforms
+I've only bothered testing this on Linux.
+
 ## How To Play
 Compile and run it. Use arrow keys to move the red square. 
 The goal is to reach the green square without touching anything black.
